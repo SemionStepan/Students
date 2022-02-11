@@ -2,30 +2,36 @@
 #include <string.h>
 #include <stdlib.h>
 
-char str [] = {"О сколько нам открытий чудных Готовят просвещенья дух И опыт, сын ошибок трудных, И гений, парадоксов друг, И случай, бог изобретатель. А. С. Пушкин."};
+#define END_OF_STRING '\0'
 
-int DeleteSpace(char* str);
+char* deleteSpace(char*);
+void copyString(char*, char*);
 
 int main()
 {
-    DeleteSpace(str);
+    char str[] = {"О сколько нам открытий чудных Готовят просвещенья дух И опыт, сын ошибок трудных, И гений, парадоксов друг, И случай, бог изобретатель. А. С. Пушкин."};
+
+    printf("%s", deleteSpace(str));
+
     return 0;
 }
-int DeleteSpace(char* str)
+char* deleteSpace(char* str)
 {
-    int strstrlen = strlen(str);
-
-    int j = 0;
-
-    char nospacesstr[strstrlen];
-
-    for(int count = 0; count < strstrlen ;count++)
+    for(int i = 0; str[i] != END_OF_STRING; i++)
     {
-        if(str[count] !=' ')
+        if(str[i] == ' ')
         {
-            nospacesstr[j] = str[count];
-            j++;
+            copyString(str+i, str+(i+1));
         }
     }
-  return printf("%s",nospacesstr);
+  return str;
+}
+
+void copyString(char* pStr, char* pStr1)
+{
+    while(*pStr1 != END_OF_STRING)
+    {
+        *pStr++ = *pStr1++;
+    }
+    *pStr = END_OF_STRING;
 }
