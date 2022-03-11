@@ -11,3 +11,6 @@ SOURCES += \
 HEADERS += \
     students.h \
     vector.h
+
+LIBS+=/lib/x86_64-linux-gnu/libncursesw5-dev.so
+INCLUDEPATH+=/usr/include/ncursesw
